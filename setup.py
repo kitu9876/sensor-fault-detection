@@ -10,7 +10,7 @@ HYPHEN_E_DOT="-e ."
 
 
 def get_requirements() ->List[str]:
-    with open ("requirements.txt") as file:
+    with open (REQUIREMENT_FILE_NAME) as file:
         file_content=file.readlines()
         requirement_list=[line.replace("/n","") for line in file_content]
         if HYPHEN_E_DOT in requirement_list:
@@ -18,10 +18,10 @@ def get_requirements() ->List[str]:
         return requirement_list
 
 setup(
-    name='PROJECT_NAME',
+    name=PROJECT_NAME,
     version=VERSION,
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     packages=find_packages(),
-    install_requires=REQUIREMENT_FILE_NAME
+    install_requires=get_requirements()
     )
